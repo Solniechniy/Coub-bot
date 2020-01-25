@@ -5,16 +5,6 @@ const Telegraf = require("telegraf");
 
 const bot = new Telegraf(process.env.Telegram_token);
 
-app.get("/", function(req, res) {
-  bot.telegram
-    .sendMessage(process.env.admin_id, ctx.message)
-    .catch(err => console.log(err));
-});
-app.post("/", function(req, res) {
-  bot.telegram
-    .sendMessage(process.env.admin_id, ctx.message)
-    .catch(err => console.log(err));
-});
 bot.use(async (ctx, next) => {
   await next();
 
@@ -32,3 +22,13 @@ bot.use(ctx => {
 });
 
 bot.launch();
+app.get("/", function(req, res) {
+  bot.telegram
+    .sendMessage(process.env.admin_id, "hello from get")
+    .catch(err => console.log(err));
+});
+app.post("/", function(req, res) {
+  bot.telegram
+    .sendMessage(process.env.admin_id, "hello from post")
+    .catch(err => console.log(err));
+});
