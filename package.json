@@ -12,6 +12,6 @@
     "telegraf": "^3.36.0"
   },
   "scripts": {
-    "start": "set NODE_ENV=dev && node index.js"
+    "start": "node index.js"
   }
 }

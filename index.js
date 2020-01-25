@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv").config();
 const Telegraf = require("telegraf");
-
+const port = process.env.PORT || 3000;
 const bot = new Telegraf(process.env.Telegram_token);
 
 bot.use(async (ctx, next) => {
@@ -33,3 +33,5 @@ app.post("/", function(req, res) {
     .sendMessage(process.env.admin_id, "hello from post")
     .catch(err => console.log(err));
 });
+
+app.listen(port, () => console.log(`listening on port ${port}!`));
