@@ -23,6 +23,7 @@ bot.use(ctx => {
 
 bot.launch();
 app.get("/", function(req, res) {
+  res.send("hello world");
   bot.telegram
     .sendMessage(process.env.admin_id, "hello from get")
     .catch(err => console.log(err));
