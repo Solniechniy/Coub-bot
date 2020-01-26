@@ -1,10 +1,12 @@
-const express = require("express");
+const express = require("express"),
+  bodyParser = require("body-parser");
 const app = express();
 const dotenv = require("dotenv").config();
 const Telegraf = require("telegraf");
 const port = process.env.PORT || 3000;
 const bot = new Telegraf(process.env.Telegram_token);
-app.use(express.json());
+
+app.use(bodyParser.json());
 
 bot.use(async (ctx, next) => {
   await next();
