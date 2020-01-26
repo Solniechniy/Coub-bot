@@ -4,6 +4,7 @@ const dotenv = require("dotenv").config();
 const Telegraf = require("telegraf");
 const port = process.env.PORT || 3000;
 const bot = new Telegraf(process.env.Telegram_token);
+app.use(express.json());
 
 bot.use(async (ctx, next) => {
   await next();
@@ -25,11 +26,11 @@ bot.launch();
 app.get("/", function(req, res) {
   res.send("hello world");
 
-  console.log(req);
+  console.log(req.body);
   console.log(req.query);
   console.log(req.body.email);
   bot.telegram
-    .sendMessage(process.env.admin_id, req)
+    .sendMessage(process.env.admin_id, req.body)
     .catch(err => console.log(err));
   bot.telegram
     .sendMessage(process.env.admin_id, req.query)
