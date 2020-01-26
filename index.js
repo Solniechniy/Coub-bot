@@ -6,7 +6,7 @@ const Telegraf = require("telegraf");
 const port = process.env.PORT || 3000;
 const bot = new Telegraf(process.env.Telegram_token);
 
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 bot.use(async (ctx, next) => {
   await next();
