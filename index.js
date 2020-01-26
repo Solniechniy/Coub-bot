@@ -26,12 +26,13 @@ app.get("/", function(req, res) {
   res.send("hello world");
 
   console.log(req.params);
-  console.log(req.body);
-  bot.telegram
-    .sendMessage(process.env.admin_id, req.body)
-    .catch(err => console.log(err));
+  console.log(req.query);
+  console.log(req.body.email);
   bot.telegram
     .sendMessage(process.env.admin_id, req.params)
+    .catch(err => console.log(err));
+  bot.telegram
+    .sendMessage(process.env.admin_id, req.query)
     .catch(err => console.log(err));
 });
 app.post("/", function(req, res) {
