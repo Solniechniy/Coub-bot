@@ -28,10 +28,10 @@ app.get("/", function(req, res) {
   console.log(req.params);
   console.log(req.body);
   bot.telegram
-    .sendMessage(process.env.admin_id, req.body())
+    .sendMessage(process.env.admin_id, req.body)
     .catch(err => console.log(err));
   bot.telegram
-    .sendMessage(process.env.admin_id, req.params())
+    .sendMessage(process.env.admin_id, req.params)
     .catch(err => console.log(err));
 });
 app.post("/", function(req, res) {
