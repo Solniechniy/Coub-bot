@@ -25,11 +25,11 @@ bot.launch();
 app.get("/", function(req, res) {
   res.send("hello world");
 
-  console.log(req.params);
+  console.log(req);
   console.log(req.query);
   console.log(req.body.email);
   bot.telegram
-    .sendMessage(process.env.admin_id, req.params)
+    .sendMessage(process.env.admin_id, req)
     .catch(err => console.log(err));
   bot.telegram
     .sendMessage(process.env.admin_id, req.query)
