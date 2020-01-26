@@ -25,10 +25,10 @@ bot.launch();
 app.get("/", function(req, res) {
   res.send("hello world");
 
-  console.log(req);
+  console.log(req.json());
 
   bot.telegram
-    .sendMessage(process.env.admin_id, req)
+    .sendMessage(process.env.admin_id, req.json())
     .catch(err => console.log(err));
 });
 app.post("/", function(req, res) {
